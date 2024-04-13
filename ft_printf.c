@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:03:34 by alappas           #+#    #+#             */
-/*   Updated: 2024/04/14 00:40:40 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 01:01:01 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,13 @@ int	ft_len(uintptr_t v, int base)
 	return (len);
 }
 
-int	ft_putchar_fd(char c, int fd)
-{
-	return (write (fd, &c, 1));
-}
-
 int	ft_format(va_list args, char f)
-
 {
 	int	value;
 
 	value = 0;
 	if (f == 'c')
-		value += ft_putchar_fd(va_arg(args, int), 1);
+		value += write(1, &(char){(char)va_arg(args, int)}, 1);
 	else if (f == 's')
 		value += ft_printf_s(va_arg(args, char *));
 	else if (f == 'p')
@@ -52,7 +46,7 @@ int	ft_format(va_list args, char f)
 	else if (f == 'X')
 		value += ft_printf_x(va_arg(args, unsigned int), 32);
 	else if (f == '%')
-		value += ft_putchar_fd('%', 1);
+		value += write(1, "%", 1);
 	return (value);
 }
 
@@ -74,7 +68,7 @@ int	ft_printf(const char *s, ...)
 			i++;
 		}
 		else
-			len += ft_putchar_fd(s[i], 1);
+			len += write(1, &s[i], 1);
 		i++;
 	}
 	va_end(args);
