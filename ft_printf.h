@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:31:33 by alappas           #+#    #+#             */
-/*   Updated: 2023/06/22 21:25:35 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 00:42:56 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,15 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <stdint.h>
 
 int		ft_printf_s(char *s);
-int		ft_printf_char(char c);
-int		ft_count_d(int n);
 int		ft_printf_d(int n);
-int		ft_len_p(unsigned long int v);
 int		ft_printf_p(unsigned long long ptr);
-int		ft_printf_prc(void);
-int		ft_count_u(unsigned int n);
+int		ft_printf_x(unsigned long long v, int ascii);
 int		ft_printf_undec(unsigned int n);
-int		ft_len_x(unsigned int v);
-int		ft_len_x2(unsigned int v2);
-int		ft_printf_x(unsigned int v);
-int		ft_printf_x2(unsigned int v);
 int		ft_printf(const char *s, ...);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(char *s);
-int		ft_printf_char(char c);
+int		ft_putchar_fd(char c, int fd);
+int		ft_len(uintptr_t v, int base);
 
 #endif

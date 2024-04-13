@@ -1,7 +1,4 @@
-SRCS			=	ft_printf_s.c ft_printf_c.c ft_printf_d.c\
-					ft_printf_p.c ft_printf_prc.c ft_printf_u.c\
-					ft_printf_u.c ft_printf_x.c ft_printf_x2.c\
-					ft_printf.c ft_putchar_fd.c ft_strlen.c
+SRCS			=	ft_printf.c flags.c
 
 
 OBJS	=	${SRCS:.c=.o}
@@ -11,18 +8,22 @@ RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
 
 NAME			= libftprintf.a
+EXECUTABLE 		= ft_printf
 
-all:			$(NAME)
+all:	$(NAME) #$(EXECUTABLE)
 
 $(NAME):  $(OBJS)
 				ar rcs $@ $^
+
+#$(EXECUTABLE): $(OBJS)
+#	$(CC) $(CFLAGS) -o $@ $(SRCS) $(NAME)
 
 clean:
 				$(RM) $(OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(EXECUTABLE)
 
-re:				fclean $(NAME)
+re:				fclean all
 
 .PHONY:			all clean fclean re
